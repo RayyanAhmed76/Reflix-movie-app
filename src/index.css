@@ -3,3 +3,12 @@
 /* primary = Jet Black #121212
     Slate Gray= #2C2C2C
 */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bb86fc;
+  border-radius: 10px;
+}
