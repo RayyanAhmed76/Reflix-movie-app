@@ -1,46 +1,64 @@
-import React from "react";
+import axios from "../utils/Axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import noimage from "/noimage.jpg";
 
 function TopNav() {
+  const [query, setquery] = useState("");
+  const [searches, setsearches] = useState([]);
+  const Getsearch = async () => {
+    try {
+      const { data } = await axios.get(`/search/multi?query=${query}`);
+      console.log(data);
+      setsearches(data.results);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    Getsearch();
+  }, [query]);
+
   return (
-    <div className="w-full h-[10vh] relative flex justify-center items-center ">
-      <i class="text-zinc-200 text-2xl ri-search-line"></i>
+    <div className="w-full h-[10vh] relative flex  items-center pl-[5%] ">
+      <i className="text-zinc-200 text-2xl ri-search-line"></i>
       <input
+        onChange={(e) => setquery(e.target.value)}
+        value={query}
         className="w-[50%] border-none hover:outline-[#BB86FC] hover:outline-2 hover:rounded mx-5 text-zinc-300 text-lg p-2"
         type="text"
         placeholder="Search here..."
       />
-      <i class="text-zinc-200 text-2xl ri-close-line"></i>
+      {query.length > 0 && (
+        <i
+          onClick={() => setquery("")}
+          className="text-zinc-200 text-2xl ri-close-line"
+        ></i>
+      )}
 
-      <div className="absolute w-[50%] h-[50vh]  top-[90%] bg-[#2C2C2C] overflow-auto  ">
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-500">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-600 border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello world</span>
-        </Link>
+      <div className="absolute w-[50%] max-h-[50vh]  top-[90%] bg-[#2C2C2C] overflow-auto rounded ">
+        {searches.map((s, i) => (
+          <Link
+            key={i}
+            className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold p-10 flex justify-start text-zinc-400 border-b-2 border-zinc-500"
+          >
+            <img
+              className="w-[10vh] h-[10vh] object-cover mr-5 rounded shadow-lg"
+              src={
+                s.backdrop_path || s.profile_path || s.poster_path
+                  ? `https://image.tmdb.org/t/p/original/${
+                      s.backdrop_path || s.profile_path || s.poster_path
+                    }`
+                  : noimage
+              }
+              alt=""
+            />
+            <span className="flex justify-center items-center">
+              {s.name || s.original_title || s.title || s.original_name}
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );
