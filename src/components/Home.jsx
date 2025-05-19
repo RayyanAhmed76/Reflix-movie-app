@@ -3,6 +3,7 @@ import SideNave from "../partials/SideNave";
 import TopNav from "../partials/TopNav";
 import Axios from "../utils/Axios";
 import Header from "../partials/Header";
+import HorizontalCards from "../partials/HorizontalCards";
 
 function Home() {
   document.title = "Reflix | Homepage";
@@ -29,7 +30,8 @@ function Home() {
       <SideNave />
       <div className=" relative w-[80%] h-full ">
         <TopNav />
-        <Header data={wallpaper} />
+        <Header data={wallpaper} />\
+        <HorizontalCards />
       </div>
     </>
   ) : (

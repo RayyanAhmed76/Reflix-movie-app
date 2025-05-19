@@ -37,7 +37,7 @@ function TopNav() {
         ></i>
       )}
 
-      <div className="absolute w-[50%] max-h-[50vh]  top-[90%] left[20%] bg-[#2C2C2C] overflow-auto rounded ">
+      <div className="absolute w-[50%] max-h-[50vh]  top-[90%]  bg-[#2C2C2C] overflow-auto rounded ">
         {searches.map((s, i) => (
           <Link
             key={i}
