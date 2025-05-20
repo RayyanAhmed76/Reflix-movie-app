@@ -28,7 +28,7 @@ function Home() {
   return wallpaper ? (
     <>
       <SideNave />
-      <div className=" relative w-[80%] h-full ">
+      <div className=" relative w-[80%] h-full overflow-x-hidden  ">
         <TopNav />
         <Header data={wallpaper} />\
         <HorizontalCards />
