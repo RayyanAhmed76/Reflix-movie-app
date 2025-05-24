@@ -5,20 +5,21 @@ function Header({ data }) {
   return (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.7),rgba(0,0,0,.9)),url( https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
+        background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.3),rgba(0,0,0,.4)),url( https://image.tmdb.org/t/p/w1280/${data.backdrop_path})`,
         backgroundPosition: "center 1%",
         backgroundSize: "cover",
-        filter: "brightness(3)",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "scroll",
         marginTop: "12vh",
       }}
-      className=" w-full h-[60vh] flex flex-col justify-end items-start p-[5%]"
+      className="w-full h-[60vh] lg:h-[60vh] md:h-[40vh] flex flex-col justify-end items-start p-[5%]"
     >
       <h1 className=" w-[70%] text-white text-6xl font-semibold ">
         {" "}
         {data.name || data.original_title || data.title || data.original_name}
       </h1>
       <p className="w-[30%] text-white mt-6 ">
-        {data.overview.slice(0, 200)}...
+        {data.overview.slice(0, 300)}...
         <Link className="text-blue-400"> more</Link>
       </p>
       <p className="text-white mt-5">

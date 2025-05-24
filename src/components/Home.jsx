@@ -8,11 +8,12 @@ import HorizontalCards from "../partials/HorizontalCards";
 function Home() {
   document.title = "Reflix | Homepage";
   const [wallpaper, setwallpaper] = useState(null);
+  const [Trending, setTrending] = useState(null);
 
   const Getdataa = async () => {
     try {
       const { data } = await Axios.get(`/trending/all/day`);
-      console.log(data);
+
       let randomdata =
         data.results[(Math.random() * data.results.length).toFixed()];
       setwallpaper(randomdata);
@@ -21,17 +22,27 @@ function Home() {
     }
   };
 
+  const GetTrending = async () => {
+    try {
+      const { data } = await Axios.get(`/trending/all/day`);
+      setTrending(data.results);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   useEffect(() => {
     !wallpaper && Getdataa();
+    !Trending && GetTrending();
   }, []);
-
-  return wallpaper ? (
+  console.log(Trending);
+  return wallpaper && Trending ? (
     <>
       <SideNave />
       <div className=" relative w-[80%] h-full overflow-x-hidden  ">
         <TopNav />
         <Header data={wallpaper} />\
-        <HorizontalCards />
+        <HorizontalCards data={Trending} />
       </div>
     </>
   ) : (
