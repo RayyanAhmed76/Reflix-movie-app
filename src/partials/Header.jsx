@@ -28,7 +28,7 @@ function Header({ data }) {
         <i className=" text-yellow-400 ri-album-fill ml-3"></i>{" "}
         {data.media_type.toUpperCase()}
       </p>
-      <Link className="bg-[#BB86FC] font-bold  p-4 rounded-md mt-4">
+      <Link className="bg-[#BB86FC] hover:text-white font-bold  p-4 rounded-md mt-4">
         {" "}
         Watch Trailer
       </Link>
