@@ -10,7 +10,10 @@ function SideNave() {
       </h1>
       <nav className=" mt-9 mb-5 flex flex-col text-zinc-300 overflow-y-auto text-lg gap-5">
         <h1 className="text-white  text-lg font-bold mb-2">New Feed</h1>
-        <Link className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg">
+        <Link
+          to={"/trending"}
+          className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
+        >
           Trending
         </Link>
         <Link className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg">

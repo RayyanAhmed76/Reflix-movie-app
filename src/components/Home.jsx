@@ -5,6 +5,7 @@ import Axios from "../utils/Axios";
 import Header from "../partials/Header";
 import HorizontalCards from "../partials/HorizontalCards";
 import { Dropdown } from "../partials/Dropdown";
+import Loading from "./Loading";
 
 function Home() {
   document.title = "Reflix | Homepage";
@@ -58,7 +59,7 @@ function Home() {
       </div>
     </>
   ) : (
-    <h1>Loading</h1>
+    <Loading />
   );
 }
 

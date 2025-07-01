@@ -10,7 +10,7 @@ function Header({ data }) {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "scroll",
-        marginTop: "12vh",
+        marginTop: "6vh",
       }}
       className="w-full h-[60vh] lg:h-[60vh] md:h-[40vh] flex flex-col justify-end items-start p-[5%]"
     >

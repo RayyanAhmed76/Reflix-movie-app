@@ -23,7 +23,7 @@ function HorizontalCards({ data: d }) {
             </h1>
             <p className="mt-6 ">
               {d.overview.slice(0, 150)}...
-              <span className="text-zinc-500"> more</span>
+              <span Name="text-zinc-500"> more</span>
             </p>
           </div>
         </div>
