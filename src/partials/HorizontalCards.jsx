@@ -3,7 +3,7 @@ import { Dropdown } from "./Dropdown";
 
 function HorizontalCards({ data: d }) {
   return (
-    <div className="w-full h-[40vh] flex overflow-y-hidden  ">
+    <div className="w-full h-[40vh] px-[1%] flex overflow-y-hidden  ">
       {d.map((d, i) => (
         <div
           key={i}

@@ -1,38 +1,36 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopNav from "./TopNav";
 import { Dropdown } from "./Dropdown";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "../components/Loading";
 import Axios from "../utils/Axios";
 import Cards from "./Cards";
-import Loading from "../components/Loading";
-import InfiniteScroll from "react-infinite-scroll-component";
-const Trending = () => {
+
+const TvShow = () => {
   const navigate = useNavigate();
-  const [category, setcategory] = useState("all");
-  const [duration, setduration] = useState("day");
-  const [trending, settrending] = useState([]);
+  const [category, setcategory] = useState("airing_today");
+  const [tvShow, settvShow] = useState([]);
   const [hasmore, sethasmore] = useState(true);
   const [page, setpage] = useState(1);
-  document.title = "Reflix | Trending " + category.toUpperCase();
+  document.title = "Reflix | Movies " + category.toUpperCase();
 
   const refreshHandler = () => {
-    if (trending.length === 0) {
-      GetTrending();
+    if (tvShow.length === 0) {
+      GetTvShow();
     } else {
       setpage(1);
-      settrending([]);
+      settvShow([]);
       sethasmore(true);
-      GetTrending();
+      GetTvShow();
     }
   };
 
-  const GetTrending = async () => {
+  const GetTvShow = async () => {
     try {
-      const { data } = await Axios.get(
-        `/trending/${category}/${duration}?page=${page}`
-      );
+      const { data } = await Axios.get(`/tv/${category}?page=${page}`);
       if (data.results.length > 0) {
-        settrending((prevstate) => [...prevstate, ...data.results]);
+        settvShow((prevstate) => [...prevstate, ...data.results]);
         setpage(page + 1);
       } else {
         sethasmore(false);
@@ -44,9 +42,9 @@ const Trending = () => {
 
   useEffect(() => {
     refreshHandler();
-  }, [category, duration]);
+  }, [category]);
 
-  return trending.length > 0 ? (
+  return tvShow.length > 0 ? (
     <div className="w-screen h-screen ">
       <div className="h-[10vh] px-[2%]   flex items-center justify-between w-full">
         <div className="  flex items-center space-x-2 ">
@@ -54,35 +52,31 @@ const Trending = () => {
             onClick={() => navigate(-1)}
             className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl"
           ></i>
-          <h1 className="text-4xl font-semibold text-zinc-500">Trending</h1>
+          <h1 className="text-4xl font-semibold text-zinc-500">
+            TvShows{" "}
+            <small className="text-sm"> {category.toUpperCase()} </small>
+          </h1>
         </div>
 
         <div className="space-x-2 flex items-center w-[80%] justify-between ">
           <TopNav />
           <Dropdown
             title={"category"}
-            options={["tv", "movie", "all"]}
+            options={["on_the_air", "popular", "top_rated", "airing_today"]}
             func={(e) => {
               setcategory(e.target.value);
-            }}
-          />
-          <Dropdown
-            title={"duration"}
-            options={["week", "day"]}
-            func={(e) => {
-              setduration(e.target.value);
             }}
           />
         </div>
       </div>
       <InfiniteScroll
         className="bg-[#121212]"
-        dataLength={trending.length}
-        next={GetTrending}
+        dataLength={tvShow.length}
+        next={GetTvShow}
         hasMore={hasmore}
         loader={<Loading />}
       >
-        <Cards data={trending} title={category} />
+        <Cards data={tvShow} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -90,4 +84,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default TvShow;
