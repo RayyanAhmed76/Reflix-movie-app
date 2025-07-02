@@ -17,24 +17,27 @@ function SideNave() {
           Trending
         </Link>
         <Link
-          to={"/blockbuster"}
+          to={"/popular"}
           className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
         >
           Blockbuster
         </Link>
         <Link
-          to={"/movies"}
+          to={"/movie"}
           className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
         >
           Movies
         </Link>
         <Link
-          to={"/tvShow"}
+          to={"/tv"}
           className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
         >
           Tv shows
         </Link>
-        <Link className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg">
+        <Link
+          to={"/person"}
+          className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
+        >
           people
         </Link>
       </nav>

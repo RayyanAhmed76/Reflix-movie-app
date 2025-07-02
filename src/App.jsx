@@ -6,6 +6,10 @@ import Trending from "./partials/Trending";
 import Popular from "./partials/Popular";
 import Movies from "./partials/Movies";
 import TvShow from "./partials/TvShow";
+import People from "./partials/People";
+import MovieDetails from "./components/MovieDetails";
+import PeopleDetails from "./components/PeopleDetails";
+import TvDetails from "./components/TvDetails";
 
 export default function App() {
   return (
@@ -13,9 +17,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending />} />
-        <Route path="/blockbuster" element={<Popular />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tvShow" element={<TvShow />} />
+        <Route path="/popular" element={<Popular />} />
+        <Route path="/movie" element={<Movies />} />
+        <Route path="/movie/details/:id" element={<MovieDetails />} />
+        <Route path="/tv" element={<TvShow />} />
+        <Route path="/tv/details/:id" element={<TvDetails />} />
+        <Route path="/person" element={<People />} />
+        <Route path="/person/details/:id" element={<PeopleDetails />} />
       </Routes>
     </div>
   );

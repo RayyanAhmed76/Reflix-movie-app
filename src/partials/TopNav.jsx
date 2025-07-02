@@ -21,12 +21,12 @@ function TopNav() {
   }, [query]);
 
   return (
-    <div className="w-full h-[10vh]  top-[2%] left-[20%] z-50    items-center pl-[5%] bg-opacity-90 pt-15 mb-12">
+    <div className="w-full h-[10vh] relative flex justify-center items-center  ">
       <i className="text-zinc-200 text-2xl ri-search-line"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
         value={query}
-        className="w-[35%] border-none hover:outline-[#BB86FC] hover:outline-2 hover:rounded mx-5  text-zinc-300 text-lg p-2"
+        className="w-[50%] h-[4vh] border-none hover:outline-[#BB86FC] hover:outline-2 hover:rounded mx-10  text-zinc-300 text-xl p-5"
         type="text"
         placeholder="Search here..."
       />
@@ -37,7 +37,7 @@ function TopNav() {
         ></i>
       )}
 
-      <div className="absolute w-[34%] max-h-[50vh] ml-[2.2%] top-[15%]  bg-[#2C2C2C] overflow-auto rounded ">
+      <div className=" z-[100]  absolute w-[50%] max-h-[50vh] left-[25%] top-[100%]  bg-[#2C2C2C] overflow-auto rounded ">
         {searches.map((s, i) => (
           <Link
             key={i}
