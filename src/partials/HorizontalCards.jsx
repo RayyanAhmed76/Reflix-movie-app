@@ -1,11 +1,13 @@
 import React from "react";
 import { Dropdown } from "./Dropdown";
+import { Link } from "react-router-dom";
 
 function HorizontalCards({ data: d }) {
   return (
     <div className="w-full h-[40vh] px-[1%] flex overflow-y-hidden  ">
       {d.map((d, i) => (
-        <div
+        <Link
+          to={`/${d.media_type}/details/${d.id}`}
           key={i}
           className="min-w-[15%] bg-zinc-900 mr-5 mb-5  scroll-smooth"
         >
@@ -26,7 +28,7 @@ function HorizontalCards({ data: d }) {
               <span Name="text-zinc-500"> more</span>
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

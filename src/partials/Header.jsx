@@ -20,7 +20,13 @@ function Header({ data }) {
       </h1>
       <p className="w-[30%] text-white mt-6 ">
         {data.overview.slice(0, 300)}...
-        <Link className="text-blue-400"> more</Link>
+        <Link
+          to={`/${data.media_type}/details/${data.id}`}
+          className="text-blue-400"
+        >
+          {" "}
+          more
+        </Link>
       </p>
       <p className="text-white mt-5">
         <i className=" text-yellow-400 ri-megaphone-fill"></i>{" "}

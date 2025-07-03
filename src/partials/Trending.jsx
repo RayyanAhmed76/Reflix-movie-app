@@ -52,7 +52,7 @@ const Trending = () => {
         <div className="  flex items-center space-x-2 ">
           <i
             onClick={() => navigate(-1)}
-            className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl"
+            className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl cursor-pointer"
           ></i>
           <h1 className="text-4xl font-semibold text-zinc-500">Trending</h1>
         </div>
