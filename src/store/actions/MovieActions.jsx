@@ -1,5 +1,6 @@
 export { removemovie } from "../reducers/MovieSlice";
 
+import { useDispatch } from "react-redux";
 import Axios from "../../utils/Axios";
 import { loadmovie } from "../reducers/MovieSlice";
 
@@ -23,6 +24,9 @@ export const asyncloadmovie = (id) => async (disptach, getstate) => {
       watchproviders:
         watchproviders.data.results.PK || watchproviders.data.results.US,
     };
+    disptach(loadmovie(ultimatedetails));
+
+    console.log(ultimatedetails);
   } catch (error) {
     console.log("error " + error);
   }
