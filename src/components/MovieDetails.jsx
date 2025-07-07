@@ -55,7 +55,7 @@ const MovieDetails = () => {
       </nav>
       {/*part 2 poster image */}
 
-      <div className="w-full flex px-[5%]">
+      <div className="w-full flex  px-[5%]">
         <img
           className="h-[40vh] hover:shadow-[9px_5px_10px_4px_rgba(0,0,0,0.1)]"
           src={`https://image.tmdb.org/t/p/w1280/${
@@ -63,22 +63,115 @@ const MovieDetails = () => {
           }`}
           alt=""
         />
+
+        <div className="content ml-[5%]">
+          <h1 className="text-white text-7xl  font-semibold whitespace-nowrap">
+            {info.detail.name ||
+              info.detail.original_title ||
+              info.detail.title ||
+              info.detail.original_name}
+            <span className="text-zinc-200 font-bold text-lg ml-[1%] " text-xl>
+              ({info.detail.release_date.split("-")[0]})
+            </span>
+          </h1>
+          <div className="flex items-center gap-x-5 mt-[5%]">
+            <span className="   text-white text-semibold text-xl flex  items-center justify-center bg-yellow-500 h-[5vh] w-[5vh] rounded-full">
+              {(info.detail.vote_average * 10).toFixed()}
+              <sup>%</sup>
+            </span>
+            <h1 className="text-white text-xl">{info.detail.release_date}</h1>
+          </div>
+          <div className="flex items-end ">
+            <h1 className="text-zinc-200 mt-2 ">
+              {info.detail.genres.map((g, index) => g.name).join(" | ")} |
+            </h1>
+            <h1 className="text-zinc-300 ">| {info.detail.runtime} min</h1>
+          </div>
+        </div>
       </div>
+
       {/*part 2 avaiable providers */}
 
-      <div className="w-[80%] flex px-[5%] mt-5">
+      <div className="w-[80%]  flex flex-col px-[5%] mt-5">
         {info.watchproviders && info.watchproviders.flatrate && (
-          <div>
-            {info.watchproviders.flatrate ? <h1>Avaiable on </h1> : " "}
-            {info.watchproviders.flatrate.map((w, index) => {
+          <div className="flex mt-5 gap-3 items-center ">
+            {info.watchproviders.flatrate ? (
+              <h1 className="text-white text-2xl">Avaiable on </h1>
+            ) : (
+              " "
+            )}
+            {info.watchproviders.flatrate.map((w) => (
               <img
                 title={w.provider_name}
-                key={index}
-                className="w-[5vh] h-[5vh] object-contain rounded-full border border-gray-600 p-1 bg-white"
+                className="h-[6vh] w-[6vh] object-contain rounded-md "
                 src={`https://image.tmdb.org/t/p/original${w.logo_path}`}
-                alt=" "
-              />;
-            })}
+                alt=""
+              />
+            ))}
+          </div>
+        )}
+
+        {info.watchproviders &&
+        info.watchproviders.buy &&
+        info.watchproviders.rent ? (
+          <div>
+            {info.watchproviders && info.watchproviders.buy && (
+              <div className="flex mt-5 gap-3 items-center ">
+                {info.watchproviders.buy ? (
+                  <h1 className="text-white text-2xl">Buy on </h1>
+                ) : (
+                  " "
+                )}
+                {info.watchproviders.buy.map((w, index) => (
+                  <img
+                    key={index}
+                    title={w.provider_name}
+                    className="h-[6vh] w-[6vh] object-contain rounded-md "
+                    src={`https://image.tmdb.org/t/p/original${w.logo_path}`}
+                    alt=""
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div>
+            {info.watchproviders && info.watchproviders.buy && (
+              <div className="flex mt-5 gap-3 items-center ">
+                {info.watchproviders.buy ? (
+                  <h1 className="text-white text-2xl">Buy on </h1>
+                ) : (
+                  " "
+                )}
+                {info.watchproviders.buy.map((w, index) => (
+                  <img
+                    key={index}
+                    title={w.provider_name}
+                    className="h-[6vh] w-[6vh] object-contain rounded-md "
+                    src={`https://image.tmdb.org/t/p/original${w.logo_path}`}
+                    alt=""
+                  />
+                ))}
+              </div>
+            )}{" "}
+            {info.watchproviders && info.watchproviders.rent && (
+              <div className="flex mt-5 gap-3 items-center ">
+                {info.watchproviders.rent ? (
+                  <h1 className="text-white text-2xl">Rent on </h1>
+                ) : (
+                  " "
+                )}
+                {info.watchproviders.rent.map((w, index) => (
+                  <img
+                    key={index}
+                    title={w.provider_name}
+                    className="h-[6vh] w-[6vh] object-contain rounded-md "
+                    src={`https://image.tmdb.org/t/p/original${w.logo_path}`}
+                    alt=""
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
