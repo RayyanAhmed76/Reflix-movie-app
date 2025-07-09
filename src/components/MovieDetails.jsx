@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { asyncloadmovie } from "../store/actions/MovieActions";
 import { removemovie } from "../store/reducers/MovieSlice";
 import Loading from "./Loading";
+import HorizontalCards from "../partials/HorizontalCards";
 
 const MovieDetails = () => {
+  const { pathname } = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,7 +25,7 @@ const MovieDetails = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [id]);
 
   return info ? (
     <div
@@ -26,12 +34,11 @@ const MovieDetails = () => {
         backgroundPosition: "center 1%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll",
-        marginTop: "6vh",
+        backgroundAttachment: "center",
       }}
-      className="w-screen h-screen px-[10px] "
+      className="relative w-full h-[160vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
     >
-      <nav className="h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
+      <nav className="min-h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
           onClick={() => navigate(-1)}
           className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl cursor-pointer"
@@ -57,14 +64,14 @@ const MovieDetails = () => {
 
       <div className="w-full flex  px-[5%]">
         <img
-          className="h-[40vh] hover:shadow-[9px_5px_10px_4px_rgba(0,0,0,0.1)]"
+          className="max-h-[60vh] min-h-[50vh] mt-[2%] hover:shadow-[9px_5px_10px_4px_rgba(0,0,0,0.1)]"
           src={`https://image.tmdb.org/t/p/w1280/${
             info.detail.poster_path || info.detail.backdrop_path
           }`}
           alt=""
         />
 
-        <div className="content ml-[5%]">
+        <div className="content ml-[5%] text-white">
           <h1 className="text-white text-7xl  font-semibold whitespace-nowrap">
             {info.detail.name ||
               info.detail.original_title ||
@@ -74,25 +81,37 @@ const MovieDetails = () => {
               ({info.detail.release_date.split("-")[0]})
             </span>
           </h1>
-          <div className="flex items-center gap-x-5 mt-[5%]">
+          <div className="flex items-center gap-x-5 mt-[1%]">
             <span className="   text-white text-semibold text-xl flex  items-center justify-center bg-yellow-500 h-[5vh] w-[5vh] rounded-full">
               {(info.detail.vote_average * 10).toFixed()}
               <sup>%</sup>
             </span>
-            <h1 className="text-white text-xl">{info.detail.release_date}</h1>
+            <h1 className="text-white text-xl ">{info.detail.release_date}</h1>
           </div>
-          <div className="flex items-end ">
-            <h1 className="text-zinc-200 mt-2 ">
+          <div className="flex items-end text-xl mt-2 ">
+            <h1 className="text-zinc-200 mt-1 ">
               {info.detail.genres.map((g, index) => g.name).join(" | ")} |
             </h1>
             <h1 className="text-zinc-300 ">| {info.detail.runtime} min</h1>
           </div>
+          <h1 className="mt-3 text-4xl italic text-zinc-300">
+            {info.detail.tagline}
+          </h1>
+          <h1 className="text-4xl mt-10">Overview</h1>
+          <p className="text-xl mb-12">{info.detail.overview}</p>
+          <Link
+            to={`${pathname}/trailer/trailer`}
+            className="bg-[#6556CD] px-7 py-4 rounded-xl"
+          >
+            <i className="ri-play-fill mr-2"></i>
+            Play Trailer
+          </Link>
         </div>
       </div>
 
       {/*part 2 avaiable providers */}
 
-      <div className="w-[80%]  flex flex-col px-[5%] mt-5">
+      <div className="w-[80%]  flex flex-col px-[5%] mb-8 mt-5">
         {info.watchproviders && info.watchproviders.flatrate && (
           <div className="flex mt-5 gap-3 items-center ">
             {info.watchproviders.flatrate ? (
@@ -175,6 +194,22 @@ const MovieDetails = () => {
           </div>
         )}
       </div>
+
+      {/*part 3 recommendation or similarity */}
+      <hr className="border-none h-[2px] bg-zinc-400" />
+
+      <h1 className="text-white text-3xl p-5 font-semibold">
+        You may also like
+      </h1>
+
+      <HorizontalCards
+        data={
+          info.recommendations.length > 0
+            ? info.recommendations
+            : info.similarity
+        }
+      />
+      <Outlet className="text-white" />
     </div>
   ) : (
     <Loading />
