@@ -100,7 +100,7 @@ const MovieDetails = () => {
           <h1 className="text-4xl mt-10">Overview</h1>
           <p className="text-xl mb-12">{info.detail.overview}</p>
           <Link
-            to={`${pathname}/trailer/trailer`}
+            to={`${pathname}/trailer`}
             className="bg-[#6556CD] px-7 py-4 rounded-xl"
           >
             <i className="ri-play-fill mr-2"></i>

@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movies />} />
         <Route path="/movie/details/:id" element={<MovieDetails />}>
-          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
+          <Route path="trailer" element={<Trailer />} />
         </Route>
         <Route path="/tv" element={<TvShow />} />
         <Route path="/tv/details/:id" element={<TvDetails />} />
