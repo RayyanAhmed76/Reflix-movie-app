@@ -11,6 +11,7 @@ import { asyncloadmovie } from "../store/actions/MovieActions";
 import { removemovie } from "../store/reducers/MovieSlice";
 import Loading from "./Loading";
 import HorizontalCards from "../partials/HorizontalCards";
+import Reviews from "../partials/Reviews";
 
 const MovieDetails = () => {
   const { pathname } = useLocation();
@@ -209,6 +210,16 @@ const MovieDetails = () => {
             : info.similarity
         }
       />
+      <h1 className="text-5xl text-white">Reviews</h1>
+      <hr />
+      <Reviews />
+
+      <div className="text-white">
+        {info.reviews.map((r, i) => {
+          <h1>{r.author}</h1>;
+        })}
+      </div>
+
       <Outlet className="text-white" />
     </div>
   ) : (
