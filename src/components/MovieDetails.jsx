@@ -37,7 +37,7 @@ const MovieDetails = () => {
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "center",
       }}
-      className="relative w-full h-[160vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
+      className="relative w-full h-[190vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
     >
       <nav className="min-h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
@@ -210,15 +210,9 @@ const MovieDetails = () => {
             : info.similarity
         }
       />
-      <h1 className="text-5xl text-white">Reviews</h1>
+      <h1 className="text-5xl text-white mt-7">Reviews</h1>
       <hr />
       <Reviews />
-
-      <div className="text-white">
-        {info.reviews.map((r, i) => {
-          <h1>{r.author}</h1>;
-        })}
-      </div>
 
       <Outlet className="text-white" />
     </div>
