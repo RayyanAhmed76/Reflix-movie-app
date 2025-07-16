@@ -12,6 +12,7 @@ import { removetv } from "../store/reducers/TvSlice";
 import Loading from "./Loading";
 import HorizontalCards from "../partials/HorizontalCards";
 import Reviews from "../partials/Reviews";
+import noimage from "/noimage.jpg";
 
 const TvDetails = () => {
   const { pathname } = useLocation();
@@ -31,13 +32,13 @@ const TvDetails = () => {
   return info ? (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.3),rgba(0,0,0,.4)),url( https://image.tmdb.org/t/p/w1280/${info.detail.backdrop_path})`,
+        background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.3),rgba(0,0,0,.4)),url( https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
         backgroundPosition: "center 1%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "center",
       }}
-      className="relative w-full h-[190vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
+      className="relative w-full h-[240vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
     >
       <nav className="min-h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
@@ -73,7 +74,7 @@ const TvDetails = () => {
         />
 
         <div className="content ml-[5%] text-white">
-          <h1 className="text-white text-7xl  font-semibold whitespace-nowrap">
+          <h1 className="text-white text-7xl  font-semibold ">
             {info.detail.name ||
               info.detail.original_title ||
               info.detail.title ||
@@ -198,7 +199,31 @@ const TvDetails = () => {
         )}
       </div>
 
-      {/*part 3 recommendation or similarity */}
+      {/*part 3 seasons */}
+      <hr className="border-none h-[2px] bg-zinc-400" />
+
+      <h1 className="text-white text-3xl p-5 font-semibold">Seasons</h1>
+      <div className="w-full h-[48vh] p-[1%]  flex flex-col flex-wrap overflow-x-auto overflow-y-hidden ">
+        {info.detail.seasons.map((s, i) => (
+          <div className="  ">
+            <img
+              key={i}
+              className="h-[40vh] w-[28vh] mr-4 hover:shadow-[19px_17px_38px_8px_rgba(0,0,0,1.5)]"
+              src={
+                s.poster_path
+                  ? `https://image.tmdb.org/t/p/w1280/${s.poster_path}`
+                  : noimage
+              }
+              alt=""
+            />
+            <h1 className="text-zinc-300 font-semibold text-2xl mt-[2%]">
+              {s.name}
+            </h1>
+          </div>
+        ))}
+      </div>
+
+      {/*part 4 recommendation or similarity */}
       <hr className="border-none h-[2px] bg-zinc-400" />
 
       <h1 className="text-white text-3xl p-5 font-semibold">

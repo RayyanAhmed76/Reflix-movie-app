@@ -8,13 +8,13 @@ const Reviews = () => {
   const reviews = useSelector((state) => state[category].info.reviews);
   console.log("reviewsss");
   return (
-    <div>
+    <div className="">
       {reviews.length === 0 ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <h1 className="text-5xl font-semibold">No reviews</h1>
         </div>
       ) : (
-        <div className=" h-[40vh] overflow-y-auto ">
+        <div className=" h-[30vh] overflow-y-auto  ">
           {reviews.map((r, i) => (
             <div key={i} className="flex flex-col text-zinc-300  ">
               <h1 className="text-3xl mb-5 mt-6 text-white">{r.author}</h1>
