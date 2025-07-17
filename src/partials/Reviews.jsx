@@ -6,12 +6,12 @@ const Reviews = () => {
   const { pathname } = useLocation();
   const category = pathname.includes("movie") ? "movie" : "tv";
   const reviews = useSelector((state) => state[category].info.reviews);
-  console.log("reviewsss");
+
   return (
     <div className="">
       {reviews.length === 0 ? (
         <div className="flex justify-center ">
-          <h1 className="text-5xl font-semibold">No reviews</h1>
+          <h1 className="text-5xl font-semibold">reviews not available</h1>
         </div>
       ) : (
         <div className=" h-[30vh] overflow-y-auto  ">
