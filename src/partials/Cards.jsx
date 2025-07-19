@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Cards = ({ data, title }) => {
   return (
-    <div className=" w-full flex flex-wrap bg-[#121212] px-[4%]">
+    <div className=" w-full flex flex-wrap bg-[#121212] justify-center">
       {data.map((c, i) => (
         <Link
           to={`/${c.media_type || title}/details/${c.id}`}
           key={i}
-          className="relative w-[25vh] mb-[5%] mr-[3%] object-cover"
+          className="relative w-[30vh] mb-[5%] mr-[3%] object-cover"
         >
           <img
             className="h-[40vh] hover:shadow-[19px_17px_38px_8px_rgba(0,0,0,1.5)]"
