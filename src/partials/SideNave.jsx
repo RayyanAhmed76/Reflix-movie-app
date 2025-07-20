@@ -51,7 +51,10 @@ function SideNave() {
         <Link className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg">
           About Reflix
         </Link>
-        <Link className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg">
+        <Link
+          to={"/ContactUs"}
+          className="hover:bg-[#BB86FC] hover:text-white p-5 duration-300 rounded-lg"
+        >
           Contact Us
         </Link>
       </nav>

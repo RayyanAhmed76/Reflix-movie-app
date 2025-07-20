@@ -12,12 +12,14 @@ import PeopleDetails from "./components/PeopleDetails";
 import TvDetails from "./components/TvDetails";
 import Trailer from "./partials/Trailer";
 import Error from "./components/Error";
+import ContactUs from "./partials/ContactUs";
 
 export default function App() {
   return (
     <div className=" flex bg-[#121212] w-screen h-screen">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movies />} />
