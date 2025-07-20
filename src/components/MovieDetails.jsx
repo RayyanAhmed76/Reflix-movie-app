@@ -39,7 +39,7 @@ const MovieDetails = () => {
       }}
       className="relative w-full h-[190vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
     >
-      <nav className="min-h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
+      <nav className="min-h-[10vh] text-2xl w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
           onClick={() => navigate(-1)}
           className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl cursor-pointer"

@@ -40,7 +40,7 @@ const TvDetails = () => {
       }}
       className="relative w-full h-[240vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
     >
-      <nav className="min-h-[10vh] w-full gap-10 text-zinc-100 flex items-center px-[7%]">
+      <nav className="min-h-[10vh] text-2xl w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
           onClick={() => navigate(-1)}
           className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl cursor-pointer"
@@ -94,14 +94,13 @@ const TvDetails = () => {
           </div>
           <div className="flex items-end text-xl mt-2 ">
             <h1 className="text-zinc-200 mt-1 ">
-              {info.detail.genres.map((g, index) => g.name).join(" | ")} |
+              {info.detail.genres.map((g, index) => g.name).join(" | ")}
             </h1>
-            <h1 className="text-zinc-300 ">| {info.detail.runtime} min</h1>
           </div>
           <h1 className="mt-3 text-4xl italic text-zinc-300">
             {info.detail.tagline}
           </h1>
-          <h1 className="text-4xl mt-10">Overview</h1>
+          <h1 className="text-4xl mt-10 mb-4">Overview</h1>
           <p className="text-xl mb-12">{info.detail.overview}</p>
           <Link
             to={`${pathname}/trailer`}
@@ -205,7 +204,7 @@ const TvDetails = () => {
       <h1 className="text-white text-3xl p-5 font-semibold">Seasons</h1>
       <div className="w-full h-[48vh] p-[1%]  flex flex-col flex-wrap overflow-x-auto overflow-y-hidden ">
         {info.detail.seasons.map((s, i) => (
-          <div className="  ">
+          <div className=" ">
             <img
               key={i}
               className="h-[40vh] w-[28vh] mr-4 hover:shadow-[19px_17px_38px_8px_rgba(0,0,0,1.5)]"

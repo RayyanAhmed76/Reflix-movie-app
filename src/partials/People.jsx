@@ -12,7 +12,7 @@ const People = () => {
   const [people, setpeople] = useState([]);
   const [hasmore, sethasmore] = useState(true);
   const [page, setpage] = useState(1);
-  document.title = "Reflix | Movies " + category.toUpperCase();
+  document.title = "Reflix | " + category.toUpperCase() + "| PEOPLE";
 
   const refreshHandler = () => {
     if (people.length === 0) {

@@ -13,7 +13,7 @@ const TvShow = () => {
   const [tvShow, settvShow] = useState([]);
   const [hasmore, sethasmore] = useState(true);
   const [page, setpage] = useState(1);
-  document.title = "Reflix | Movies " + category.toUpperCase();
+  document.title = "Reflix | TVSHOWS " + category.toUpperCase();
 
   const refreshHandler = () => {
     if (tvShow.length === 0) {

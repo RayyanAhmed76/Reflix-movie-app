@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Link,
@@ -12,6 +12,7 @@ import { removepeople } from "../store/reducers/PeopleSlice";
 import Loading from "./Loading";
 import HorizontalCards from "../partials/HorizontalCards";
 import Reviews from "../partials/Reviews";
+import { Dropdown } from "../partials/Dropdown";
 
 const PeopleDetails = () => {
   const { pathname } = useLocation();
@@ -19,7 +20,8 @@ const PeopleDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { info } = useSelector((state) => state.people);
-
+  const [category, setcategory] = useState("Movie");
+  const [category2, setcategory2] = useState("movie");
   useEffect(() => {
     dispatch(asyncloadpeople(id));
 
@@ -27,8 +29,11 @@ const PeopleDetails = () => {
       dispatch(removepeople());
     };
   }, [id]);
+  console.log(category2);
+
+  console.log(category + "_Credits");
   return info ? (
-    <div className="px-[8%] w-screen bg-[#121212] h-[120vh]">
+    <div className="px-[8%] w-screen bg-[#121212] h-[180vh]">
       <nav className="h-[10vh] w-full text-zinc-100 flex items-center px-[7%]">
         <Link
           onClick={() => navigate(-1)}
@@ -114,9 +119,46 @@ const PeopleDetails = () => {
           <h1 className="text-3xl text-white flex flex-wrap mt-[3%] ">
             Biography
           </h1>
-          <p className="text-zinc-400 my-3 text-lg mt-5 font-semibold ">
+          <p className="text-zinc-400 my-3 text-xl mt-5 font-semibold ">
             {info.detail.biography}
           </p>
+          <h1 className="text-3xl text-white flex flex-wrap mt-[3%] mb-[2%] ">
+            Performed Acting in
+          </h1>
+          <HorizontalCards data={info.Combined_Credits.cast} />
+          <div className="w-full flex justify-between items-center mt-[3%]">
+            <h1 className="text-3xl font-semibold text-white flex flex-wrap  ">
+              Acting
+            </h1>
+            <Dropdown
+              title={"Category"}
+              options={["Tv", "Movie"]}
+              func={(e) => {
+                const value = e.target.value;
+                setcategory(value);
+                setcategory2(value.toLowerCase());
+              }}
+            />
+          </div>
+
+          <div className=" text-zinc-400 w-full h-[50vh] overflow-x-hidden overflow-y-auto mt-5 shadow-lg shadow-[rgba(255,255,255,.5)] border-2 p-5  border-zinc-700">
+            {info[category + "_Credits"].cast.map((c, i) => (
+              <li
+                key={i}
+                className="hover:text-white h-[5vh] rounded duration-300 cursor-pointer hover:bg-zinc-600 mb-5"
+              >
+                <Link to={`/${category2}/details/${c.id}`} className="text-xl">
+                  <span>
+                    {" "}
+                    {c.name || c.original_title || c.title || c.original_name}
+                  </span>
+                  <span className="block ml-[2%]">
+                    {c.character && c.character}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </div>
         </div>
       </div>
     </div>
