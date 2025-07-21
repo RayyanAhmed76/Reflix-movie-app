@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import noimage from "/noimage.jpg";
 const Cards = ({ data, title }) => {
   return (
-    <div className=" w-full flex flex-wrap bg-[#121212] justify-center">
+    <div className=" w-full flex flex-wrap bg-[#121212] justify-center ">
       {data.map((c, i) => (
         <Link
           to={`/${c.media_type || title}/details/${c.id}`}
@@ -25,7 +25,7 @@ const Cards = ({ data, title }) => {
             {c.name || c.original_title || c.title || c.original_name}
           </h1>
           {c.vote_average && (
-            <div className=" absolute right-[-7%] top-[5%]  text-white text-semibold text-xl flex items-center justify-center bg-yellow-500 h-[4vh] w-[4vh] rounded-full">
+            <div className=" absolute right-[3%] top-[5%]  text-white text-semibold text-xl flex items-center justify-center bg-yellow-500 h-[5vh] w-[5vh] rounded-full">
               {(c.vote_average * 10).toFixed()}
               <sup>%</sup>
             </div>

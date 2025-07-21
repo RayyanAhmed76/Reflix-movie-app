@@ -16,7 +16,7 @@ import ContactUs from "./partials/ContactUs";
 
 export default function App() {
   return (
-    <div className=" flex bg-[#121212] w-screen h-screen">
+    <div className=" flex bg-[#121212] w-screen h-screen overflow-y-hidden overflow-x-hidden">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contactUs" element={<ContactUs />} />

@@ -32,12 +32,12 @@ const MovieDetails = () => {
     <div
       style={{
         background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.3),rgba(0,0,0,.4)),url( https://image.tmdb.org/t/p/w1280/${info.detail.backdrop_path})`,
-        backgroundPosition: "center 1%",
+        backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "center",
+        backgroundAttachment: "fixed",
       }}
-      className="relative w-full h-[190vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
+      className="relative w-full h-min-screen  px-[10px] bg-[#121212] text-white overflow-x-auto overflow-y-auto "
     >
       <nav className="min-h-[10vh] text-2xl w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link
@@ -63,7 +63,7 @@ const MovieDetails = () => {
       </nav>
       {/*part 2 poster image */}
 
-      <div className="w-full flex  px-[5%]">
+      <div className="w-full flex  px-[5%] ">
         <img
           className="max-h-[60vh] min-h-[50vh] mt-[2%] hover:shadow-[9px_5px_10px_4px_rgba(0,0,0,0.1)]"
           src={`https://image.tmdb.org/t/p/w1280/${

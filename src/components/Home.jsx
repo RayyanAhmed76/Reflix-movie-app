@@ -38,16 +38,17 @@ function Home() {
     GetTrending();
     !wallpaper && Getdataa();
   }, [category]);
-  console.log(Trending);
+
   return wallpaper && Trending ? (
     <>
       <SideNave />
-      <div className=" relative w-[80%] h-full overflow-x-auto   scroll-smooth ">
+
+      <div className=" relative w-[80%] h-screen overflow-x-hidden bg-[#121212]  scroll-smooth ">
         <TopNav />
         <Header data={wallpaper} />
 
         <div className="flex justify-between p-8">
-          <h1 className="text-3xl font-bold text-white   ">Trending</h1>
+          <h1 className="text-3xl font-bold text-white">Trending</h1>
 
           <Dropdown
             title={"Filter"}

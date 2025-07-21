@@ -38,7 +38,7 @@ const TvDetails = () => {
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "center",
       }}
-      className="relative w-full h-[240vh]  px-[10px] bg-[#121212] text-white overflow-x-auto "
+      className="relative w-full h-min-screen  px-[10px] bg-[#121212] text-white overflow-x-auto overflow-y-scroll "
     >
       <nav className="min-h-[10vh] text-2xl w-full gap-10 text-zinc-100 flex items-center px-[7%]">
         <Link

@@ -43,7 +43,7 @@ const People = () => {
     refreshHandler();
   }, [category]);
   return people.length > 0 ? (
-    <div className="w-screen h-screen ">
+    <div className="w-screen h-screen overflow-y-auto ">
       <div className="h-[10vh] px-[2%]   flex items-center justify-between w-full">
         <div className="  flex items-center space-x-2 ">
           <i

@@ -5,12 +5,12 @@ import noimage from "/noimage.jpg";
 
 function HorizontalCards({ data: d }) {
   return (
-    <div className="w-full h-[60vh] sm:h-[50vh] xl:h-[50vh]   flex overflow-y-hidden  ">
+    <div className="w-full h-[60vh] sm:min-h-[50vh]  flex overflow-y-hidden  p-[1%]  ">
       {d.map((d, i) => (
         <Link
           to={`/${d.media_type}/details/${d.id}`}
           key={i}
-          className="min-w-[20%] bg-zinc-900 mr-5 mb-5   scroll-smooth"
+          className="min-w-[20%] bg-zinc-900 mr-5 mb-5 scroll-smooth"
         >
           <img
             className="w-full aspect-[16/9]  object-cover"

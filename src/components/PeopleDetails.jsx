@@ -33,8 +33,8 @@ const PeopleDetails = () => {
 
   console.log(category + "_Credits");
   return info ? (
-    <div className="px-[8%] w-screen bg-[#121212] h-[180vh]">
-      <nav className="h-[10vh] w-full text-zinc-100 flex items-center px-[7%]">
+    <div className="px-[8%] w-screen bg-[#121212] h-min-screen overflow-y-auto">
+      <nav className="h-[10vh] w-full text-zinc-100 flex items-center px-[7%] cursor-pointer">
         <Link
           onClick={() => navigate(-1)}
           className="hover:text-[#6556CD] ri-arrow-left-fill text-zinc-500 text-4xl cursor-pointer"
@@ -141,11 +141,11 @@ const PeopleDetails = () => {
             />
           </div>
 
-          <div className=" text-zinc-400 w-full h-[50vh] overflow-x-hidden overflow-y-auto mt-5 shadow-lg shadow-[rgba(255,255,255,.5)] border-2 p-5  border-zinc-700">
+          <div className=" text-zinc-400 w-full h-[50vh] pb-[5%] mb-[2%] overflow-x-hidden overflow-y-auto mt-5 shadow-lg shadow-[rgba(255,255,255,.5)] border-2 p-5  border-zinc-700">
             {info[category + "_Credits"].cast.map((c, i) => (
               <li
                 key={i}
-                className="hover:text-white h-[5vh] rounded duration-300 cursor-pointer hover:bg-zinc-600 mb-5"
+                className="hover:text-white h-[8vh] rounded duration-300  cursor-pointer hover:bg-zinc-600 mb-5"
               >
                 <Link to={`/${category2}/details/${c.id}`} className="text-xl">
                   <span>

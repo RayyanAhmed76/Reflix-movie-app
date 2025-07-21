@@ -14,7 +14,7 @@ const Reviews = () => {
           <h1 className="text-5xl font-semibold">reviews not available</h1>
         </div>
       ) : (
-        <div className=" h-[30vh] overflow-y-auto  ">
+        <div className=" h-[40vh] mb-[2%] overflow-y-auto  ">
           {reviews.map((r, i) => (
             <div key={i} className="flex flex-col text-zinc-300  ">
               <h1 className="text-3xl mb-5 mt-6 text-white">{r.author}</h1>
